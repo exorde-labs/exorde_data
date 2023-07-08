@@ -44,7 +44,7 @@ class Domain(str, metaclass=MadType):
 class Url(str, metaclass=MadType):
     description = "Uniform-Resource-Locator"
     annotation = str
-    pattern = r"^https?:\/\/(?:www\.)?[\p{L}\p{N}@:%._\+~#=]{1,256}\.[\p{L}\p{N}]{1,32}\b(?:[\p{L}\p{N}@:%_\+.~#?&\/=]*)$"
+    pattern = r"^https?:\/\/[\p{L}\p{N}@:%._\+~#=\/?&-]{1,400}$"
 
 
 class ExternalId(str, metaclass=MadType):

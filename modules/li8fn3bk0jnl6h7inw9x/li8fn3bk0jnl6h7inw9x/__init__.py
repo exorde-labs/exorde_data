@@ -323,6 +323,17 @@ def author_url_to_id(author_url: str) -> str:
     sha1.update(author_url_path.encode())
     return sha1.hexdigest()
 
+def strip_text_content(text_content: str) -> str:
+    """ Stripping extra whitespaces in a text content """
+    text_content = re.sub("( +)", " ", text_content)  # Replacing spaces
+    # Replacing single lines
+    text_content = re.sub(
+        "[^\s|^](( +)|)\n(( +)|)([^\s]|$)", "\n", text_content)
+    # Replacing multiple new lines with a single line
+    text_content = re.sub(
+        "([\s]+|)\n([\s]+|)\n([\s]+|)", "\n\n", text_content)
+    text_content = text_content.strip()
+    return text_content
 
 def load_more_comments() -> bool:
     """
@@ -391,14 +402,7 @@ async def scrape_comment_list(post_url: str, maximum_items_to_collect: int, min_
         content_el = comment_el.find_element_by_class_name(
             "update-components-text")
         text_content = content_el.get_attribute("textContent")
-        text_content = re.sub("( +)", " ", text_content)  # Replacing spaces
-        # Replacing single lines
-        text_content = re.sub(
-            "[^\s|^](( +)|)\n(( +)|)([^\s]|$)", "\n", text_content)
-        # Replacing multiple new lines with a single line
-        text_content = re.sub(
-            "([\s]+|)\n([\s]+|)\n([\s]+|)", "\n\n", text_content)
-        text_content = text_content.strip()
+        text_content = strip_text_content(text_content)
 
         comment_urn = None
         try:
@@ -507,14 +511,7 @@ async def scrape_post_list(list_index: int, maximum_items_to_collect: int, min_p
             continue
 
         text_content = text_content_el.get_attribute("textContent")
-        text_content = re.sub("( +)", " ", text_content)  # Replacing spaces
-        # Replacing single lines
-        text_content = re.sub(
-            "[^\s|^](( +)|)\n(( +)|)([^\s]|$)", "\n", text_content)
-        # Replacing multiple new lines with a single line
-        text_content = re.sub(
-            "([\s]+|)\n([\s]+|)\n([\s]+|)", "\n\n", text_content)
-        text_content = text_content.strip()
+        text_content = strip_text_content(text_content)
 
         if len(text_content) < min_post_length:
             post_id = post_id + 1

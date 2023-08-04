@@ -1,0 +1,7 @@
+selenium==4.2.0
+exorde_data
+
+[dev]
+pytest
+pytest-cov
+pytest-asyncio

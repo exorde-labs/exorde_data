@@ -88,10 +88,8 @@ async def get_target(
         else:
             targets = pre_loaded_targets
     logging.info(f"get_target.targets = {targets}")
-    if len(targets) > 1:
+    if len(targets) > 0:
         choice = random.choice(targets)
         logging.info(f"get_target.choice = {choice}")
         return choice
     return None
-
-

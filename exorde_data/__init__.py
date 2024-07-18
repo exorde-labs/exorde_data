@@ -252,7 +252,8 @@ class ProtocolItem(dict, metaclass=MadType):
 
     created_at: CreatedAt
     title: Optional[Title]  # titre obligatoire si pas de contenu
-    content: Optional[Content]
+    raw_content: Optional[Content]
+    translated_content: Optional[Content]
     summary: Optional[Summary]  # <- description or summary available
     picture: Optional[Url]
     author: Optional[Author]

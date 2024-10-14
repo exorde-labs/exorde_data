@@ -211,6 +211,7 @@ class Analysis(dict, metaclass=MadType):
     sentiment: Sentiment
     embedding: Embedding
     #gender: Gender
+    classification: Classification
     # text_type: TextType
     emotion: Emotion
     # irony: Irony

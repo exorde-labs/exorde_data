@@ -210,11 +210,12 @@ class Analysis(dict, metaclass=MadType):
     language_score: LanguageScore
     sentiment: Sentiment
     embedding: Embedding
-    #gender: Gender
-    # text_type: TextType
+    gender: Gender
+    classification: Classification
+    text_type: TextType
     emotion: Emotion
-    # irony: Irony
-    # age: Age
+    irony: Irony
+    age: Age
 
 
 class Processed(dict, metaclass=MadType):

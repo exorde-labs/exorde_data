@@ -171,8 +171,7 @@ def remove_invalid_keywords(input_list):
     return output_list
 
 
-def extract_keywords(translation: Translation) -> Keywords:
-    content: str = translation.translation       
+def extract_keywords(content: str) -> list[str]:
     kx1 = _extract_keywords1(content)
     keywords_weighted = list(set(kx1))
     keywords_ = [e[0] for e in set(keywords_weighted)]
@@ -194,4 +193,10 @@ def extract_keywords(translation: Translation) -> Keywords:
         keywords_ = remove_invalid_keywords(keywords_)
     except Exception as e:
         print(f"Error in advanced keywords extraction: {e}")
-    return Keywords(list(set(keywords_)))
+    return list(set(keywords_))
+
+
+def typed_extract_keywords(translation: Translation) -> Keywords:
+    content: str = translation.translation
+    keywords: list[str] = extract_keywords(content)
+    return Keywords(keywords)

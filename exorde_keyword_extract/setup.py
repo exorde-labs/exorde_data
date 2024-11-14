@@ -1,0 +1,30 @@
+from setuptools import find_packages, setup
+
+setup(
+    name="exorde_keyword_extract",
+    version="0.0.1",
+    packages=find_packages(include=["src"]),
+    install_requires=[
+        "packaging",
+        "finvader==1.0.2",
+        "aiofiles==23.2.1",
+        "keybert==0.7.0",
+        "nltk==3.6.2",
+        "safetensors==0.3.1",
+        "numpy==1.23.4",
+        "tiktoken==0.4.0",
+        "feedparser==6.0.8",
+        "python_dateutil==2.8.2",
+        "newspaper3k==0.2.8",
+        "huggingface_hub==0.14.1",
+        "pandas==1.5.3",
+        "sentence-transformers==2.2.2",
+        "spacy==3.5.1",
+        "swifter==1.3.4",
+        "tensorflow==2.12.0",
+        "torch==1.13.0",
+        "vaderSentiment==3.3.2",
+        "yake==0.4.8",
+        "wtpsplit==1.3.0"
+    ],
+)

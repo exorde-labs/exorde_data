@@ -58,11 +58,12 @@ async def get_target(
         filter_key: str, filter_value:str
     ) -> list[str]:
         orchestrator_name = os.getenv("ORCHESTRATOR_NAME", "orchestrator")
+        orchestrator_port = os.getenv("ORCHESTRATOR_PORT", 8000)
         logging.info(f"fetch_ips_from_orchestrator, orchestrator_name is '{orchestrator_name}'")
         assert orchestrator_name
-        base_url = f"http://{orchestrator_name}:8000/get"
+        base_url = f"http://{orchestrator_name}:{orchestrator_port}/get"
         query_params = {filter_key: filter_value}
-        logging.info(f"\t query_params are {filter_key}: {filter_value}")
+        logging.info(f"\t query_params are {filter_key}:{filter_value}")
         log_environment()
         try:
             async with ClientSession() as session:

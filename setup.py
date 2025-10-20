@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="exorde_data",
-    version="0.0.5",
+    version="0.0.6",
     packages=find_packages(include=["exorde_data"]),
     install_requires=["madtypes"],
     entry_points={

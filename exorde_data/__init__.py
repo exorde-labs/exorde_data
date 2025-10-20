@@ -71,14 +71,15 @@ class CalmItem(dict):
     created_at: CreatedAt
     title: Optional[Title]  # titre obligatoire si pas de contenu
     content: Optional[Content]
-    summary: Optional[Summary]  # <- description or summary available
+    summary: Optional[Summary]
     picture: Optional[Url]
     author: Optional[Author]
+    username: Optional[Username]           
+    userprofile_url: Optional[UserProfileUrl] 
     external_id: Optional[ExternalId]
     external_parent_id: Optional[ExternalParentId]
     domain: Domain
     url: Url
-    # type: Type # work in progress
 
     def is_valid(self, **kwargs) -> bool:
         """object is valid if we either have content or title"""
@@ -88,6 +89,7 @@ class CalmItem(dict):
             and not kwargs.get("title", None)
             else True
         )
+
 
 
 class Item(CalmItem, metaclass=MadType):

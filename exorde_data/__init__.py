@@ -19,12 +19,20 @@ class Picture(str, metaclass=MadType):
 
 
 class Author(str, metaclass=MadType):
-    """todo : SHA1 format check ?"""
-
     description = "SHA1 encoding of the username assigned as creator of the item on its source platform"
     annotation = str
 
 
+class Username(str, metaclass=MadType):
+    description = "Display name or handle of the user who created the item"
+    annotation = str
+
+
+class UserProfileUrl(str, metaclass=MadType):
+    description = "URL of the user’s profile page on the source platform"
+    annotation = str
+    pattern = r"^https?:\/\/[\S]{1,400}$"
+    
 class CreatedAt(str, metaclass=MadType):
     description = "ISO8601/RFC3339 Date of creation of the item"
     annotation = str
